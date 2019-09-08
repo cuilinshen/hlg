@@ -1,0 +1,23 @@
+                                <div class="control-group">
+                                    <label class="control-label" for="{field}">{name}</label>
+                                    <div class="controls">
+                                        <div class="ace-file-input span6">
+                                            <input type="file" id="{field}" name="{field}" class="{field}"/>
+                                            <label data-title="选择图片" for="{field}">
+                                                <span data-title="添加图片"><i class="icon-upload-alt"></i></span>
+                                            </label>
+                                            <a class="remove" href="#"><i class="icon-remove"></i></a>
+                                        </div>
+                                        <span class="help-inline">
+                                            <?php
+                                                if(!empty($record['{field}'])) {
+                                                    echo '<a href="' . HResponse::url() . $record['{field}'] . '" title="点击看原图">';
+                                                    $detailImagePath    = HFile::getImageZoomTypePath($record['{field}'], 'list');
+                                                    HHtml::image(HResponse::url() . $detailImagePath );
+                                                    echo '</a><input type="hidden" name="old_{field}" value="' . $record['{field}'] . '" />';
+                                                }
+                                            ?>
+                                            <?php echo $popo->getFieldComment('{field}'); ?>
+                                        </span>
+                                    </div>
+                                </div>

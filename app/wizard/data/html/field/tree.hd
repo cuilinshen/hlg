@@ -1,0 +1,23 @@
+        <div class="control-group">
+			<label class="control-label" for="{field}">{name}</label>
+            <div class="controls">
+                <select  name="{field}" id="{field}" cur="<?php echo $record['{field}']; ?>" class="auto-select">
+                    <option value="">--请选择分类--</option>
+                    <?php 
+                        HObject::import('hongjuzi.utils.HTree');
+                        $hTree  = new HTree(
+                            HResponse::getAttribute('parents'),
+                            'id',
+                            '{fields}',
+                            'name',
+                            'id',
+                            '<option value="{id}">' .
+                            '{name}' .
+                            '</option>'
+                        );
+                        echo $hTree->getTreeStrByRecursion();
+                    ?>
+                </select>
+				<span class="help-inline"><?php echo $popo->getFieldComment('{field}'); ?></span>
+            </div>
+		</div>

@@ -1,0 +1,122 @@
+﻿<?php require_once(HResponse::path('admin') . '/common/header.tpl'); ?>
+	</head>
+	<body>
+        <?php require_once(HResponse::path('admin') . '/common/navmenu.tpl'); ?>
+		<div class="container-fluid" id="main-container">
+            <?php require_once(HResponse::path('admin') . '/common/sidebar.tpl'); ?>
+			<div id="main-content" class="clearfix">
+                <?php 
+                    $copyRecord     = HResponse::getAttribute('copyRecord'); 
+                    $record         = HResponse::getAttribute('record'); 
+                ?>   
+                <?php require_once(HResponse::path('admin') . '/common/cur-location.tpl'); ?>
+                    <div class="row-fluid">
+                    <!-- PAGE CONTENT BEGINS HERE -->
+                        <form action="<?php echo HResponse::url($modelEnName . '/' . HResponse::getAttribute('nextAction') ); ?>" method="post" enctype="multipart/form-data" id="info-form">
+                            <div class="row-fluid">
+
+                                <div class="span9 content-box">
+                                <!-- PAGE CONTENT BEGINS HERE -->
+
+                                    <?php $field = 'id'; require(HResponse::path('admin') . '/fields/hidden.tpl'); ?>
+                                    <?php $record = !$record ? $copyRecord : $record; ?>
+                                    <?php $field = 'name'; require(HResponse::path('admin') . '/fields/text.tpl'); ?>
+<?php $field = 'parent_id'; require(HResponse::path('admin') . '/fields/select.tpl'); ?>
+<?php $field = 'phone'; require(HResponse::path('admin') . '/fields/text.tpl'); ?>
+<?php $field = 'username'; require(HResponse::path('admin') . '/fields/text.tpl'); ?>
+<?php $field = 'userid'; require(HResponse::path('admin') . '/fields/select.tpl'); ?>
+<?php $field = 'image_path'; require(HResponse::path('admin') . '/fields/file.tpl'); ?>
+<?php $field = 'zhuying'; require(HResponse::path('admin') . '/fields/textarea.tpl'); ?>
+<?php $field = 'province_id'; require(HResponse::path('admin') . '/fields/select.tpl'); ?>
+<?php $field = 'city_id'; require(HResponse::path('admin') . '/fields/select.tpl'); ?>
+<?php $field = 'address'; require(HResponse::path('admin') . '/fields/text.tpl'); ?>
+
+
+
+                                <!-- PAGE CONTENT ENDS HERE -->
+
+                                </div>
+                                <div class="span3">
+                                    <div class="widget-box">
+                                        <div class="widget-header">
+                                            <h4>发布</h4>
+                                            <div class="widget-toolbar">
+                                                <a href="#" data-action="collapse">
+                                                    <i class="icon-chevron-up"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="widget-body">
+                                            <div class="widget-main">
+                                                <?php $field = 'status'; require(HResponse::path('admin') . '/fields/select.tpl'); ?>
+                                                <?php $field = 'is_open'; require(HResponse::path('admin') . '/fields/select.tpl'); ?>
+<?php $field = 'create_time'; require(HResponse::path('admin') . '/fields/datetime.tpl'); ?>
+
+                                                <?php require_once(HResponse::path('admin') . '/common/info-buttons.tpl'); 
+ ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <?php 
+                                        if($modelCfg && '2' == $modelCfg['has_multi_lang']) { 
+                                            require_once(HResponse::path('admin') . '/common/lang-widget.tpl'); 
+                                            echo '<hr/>';
+                                        }
+                                    ?>  
+
+                                    <div class="widget-box collapsed">
+                                        <div class="widget-header">
+                                            <h4>维护</h4>
+                                            <div class="widget-toolbar">
+                                                <a href="#" data-action="collapse">
+                                                    <i class="icon-chevron-up"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="widget-body">
+                                            <div class="widget-main">
+                                                <?php $field = 'total_visits'; require(HResponse::path('admin') . '/fields/text.tpl'); ?>
+<?php require_once(HResponse::path('admin') . '/fields/author.tpl'); ?>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                             </div><!--/row-->
+
+                          </div>
+                         </form>
+                    <!-- PAGE CONTENT ENDS HERE -->
+                     </div><!--/row-->
+                </div><!--/#page-content-->
+			</div><!-- #main-content -->
+		</div><!--/.fluid-container#main-container-->
+        <?php require_once(HResponse::path('admin') . '/common/footer.tpl'); ?>
+        <script type="text/javascript"> var fromId = '<?php echo HRequest::getParameter('fid');?>';</script>
+        <script type="text/javascript" src="<?php echo HResponse::uri('admin'); ?>/js/info.js"></script>
+        <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
+        <script type="text/javascript">
+            
+            $('#address').blur(function() {
+                var province = $('#province_id').find("option:selected").html();
+                var city     = $('#city_id').find("option:selected").html();
+                var address  = province + city + $(this).val();
+                var geocoder, map, marker = null;
+       
+                geocoder = new qq.maps.Geocoder();        
+                //对指定地址进行解析
+                geocoder.getLocation(address);
+                //设置服务请求成功的回调函数
+                geocoder.setComplete(function(result) {
+                    $('#lat').val(result.detail.location.lat);
+                    $('#longs').val(result.detail.location.lng);
+                });
+                //若服务请求失败，则运行以下函数
+                geocoder.setError(function() {
+                    alert("出错了，请输入正确的地址！！！");
+                });
+            });
+        </script>
+	</body>
+</html>

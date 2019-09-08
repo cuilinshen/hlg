@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @version			$Id$
+ * @create 			{now} By xjiujiu
+ * @description     HongJuZi Framework
+ * @copyRight 		Copyright (c) 2011-2012 http://www.xjiujiu.com.All right reserved
+ */
+defined('_HEXEC') or die('Restricted access!');
+
+//导入引用文件
+HClass::import('config.popo.{modelEnName}popo, app.{app}.action.{app}action, model.{modelEnName}model');
+
+/**
+ * {modelZhName}的动作类 
+ * 
+ * 主要处理主页的相关请求动作 
+ * 
+ * @author 			xjiujiu <xjiujiu@foxmail.com>
+ * @package 		app.{app}.action
+ * @since 			1.0.0
+ */
+class {className}Action extends {parentClass}Action
+{
+
+    /**
+     * 构造函数 
+     * 
+     * 初始化类里的变量 
+     * 
+     * @access public
+     */
+    public function __construct() 
+    {
+        $this->_popo    = new {className}Popo();
+        $this->_model   = new {className}Model($this->_popo);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function _list()
+    {
+        parent::_list();
+        
+        $this->_render('{modelEnName}-list');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function _detail()
+    {
+        parent::_detail();
+
+        $this->_render('{modelEnName}-detail');
+    }
+
+}
+
+?>

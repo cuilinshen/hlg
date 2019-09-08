@@ -1,0 +1,9 @@
+<div class="control-group">
+    <label class="control-label" for="{field}">{name}： </label>
+    <div class="controls">
+        <select  name="{field}" id="{field}" cur="<?php echo $record['{field}']; ?>" class="auto-select">
+            <option value="">--请选择分类--</option>
+        </select>
+        <span class="help-inline"><?php echo $popo->getfieldcomment('{field}'); ?></span>
+    </div>
+</div>

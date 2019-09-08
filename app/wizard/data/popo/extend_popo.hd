@@ -1,0 +1,40 @@
+<?php 
+
+/**
+ * @version			$Id$
+ * @create 			{now} By xjiujiu 
+ * @description     HongJuZi Framework
+ * @copyRight 		Copyright (c) 2011-2012 http://www.xjiujiu.com.All right reserved
+ */
+defined('_HEXEC') or die('Restricted access!');
+
+/**
+ * 模块工具的基本信息类 
+ * 
+ * 用于记录单模块的配置信息 
+ * 
+ * @author 			xjiujiu <xjiujiu@foxmail.com>
+ * @package 		config.popo
+ * @since 			1.0.0
+ */
+class {className}Popo extends HPopo
+{
+
+    /**
+     * @var string $_table 模块表名 
+     */
+    protected $_table           = '#_{modelEnName}';
+
+    /**
+     * @var array $_fields 模块字段配置 
+     */
+    protected $_fields          = array({fields});
+
+    /**
+     * @var array $_hasQuickOperations 模块支持的快捷操作 
+     */
+    protected $_hasQuickOperations   = {hasQuickOperations};
+
+}
+
+?>

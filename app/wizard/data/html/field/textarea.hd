@@ -1,0 +1,7 @@
+                                <div class="control-group">
+                                    <label class="control-label" for="{field}">{name}</label>
+                                    <div class="controls">
+                                        <textarea id="{field}" class="span6" placeholder="添加{name}" name="{field}"><?php echo $record['{field}']; ?></textarea>
+                                        <span class="help-inline"><?php echo $popo->getFieldComment('{field}'); ?></span>
+                                    </div>
+                                </div>   

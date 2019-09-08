@@ -1,0 +1,21 @@
+                                <div class="control-group">
+                                    <label class="control-label" for="{field}">{name}</label>
+                                    <div class="controls">
+                                        <div class="ace-file-input span6">
+                                            <input type="file" id="{field}" name="{field}" class="{field}"/>
+                                            <label data-title="选择" for="{field}">
+                                                <span data-title="没有文件"><i class="icon-upload-alt"></i></span>
+                                            </label>
+                                            <a class="remove" href="#"><i class="icon-remove"></i></a>
+                                        </div>
+                                        <span class="help-inline">
+                                            <?php
+                                                if(!empty($record['{field}'])) {
+                                                    echo '<a href="' . HResponse::url() . $record['{field}'] . '" class="lightbox" title="点击下载文件">';
+                                                    echo HFile::getFileBaseName($record['{field}']) .'</a>'; 
+                                                }
+                                            ?>
+                                            <?php echo $popo->getFieldComment('{field}'); ?> 
+                                        </span>
+                                    </div>
+                                </div>

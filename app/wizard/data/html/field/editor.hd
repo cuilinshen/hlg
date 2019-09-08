@@ -1,0 +1,6 @@
+        <div class="control-group">
+			<label class="control-label" for="{field}">{name}</label>
+			<div class="controls">
+                <script type="text/plain" name="{field}" id="{field}" style="width: 800px;" class="editor"><?php echo HString::decodeHtml($record['{field}']); ?></script>
+			</div>
+		</div>

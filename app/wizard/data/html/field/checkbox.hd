@@ -1,0 +1,9 @@
+                                <div class="control-group">
+                                    <label class="control-label" for="{field}">{name}</label>
+                                    <div class="controls">
+                                        <label>
+                                            <input def="true" cur="<?php echo $record['{field}']; ?>" class="ace-switch ace-switch-7" type="checkbox" value="是" name="{field}"><span class="lbl"></span>
+                                            <span class="help-inline"><?php echo $popo->getfieldcomment('{field}'); ?></span>
+                                        </label>
+                                    </div>
+                                </div>
